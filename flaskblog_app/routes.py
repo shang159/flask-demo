@@ -27,7 +27,6 @@ def home():
 def about():
     return render_template("about.html",title="About")
 
-
 @flaskblog.route("/register",methods=['GET',"POST"])
 def register():
     if current_user.is_authenticated:
@@ -58,13 +57,10 @@ def login():
             flash("Login unsucessful.Please check email and password","danger")
     return render_template("login.html",title="Login",form=form)
 
-
-
-
 @flaskblog.route("/logout")
 def logout():
     logout_user()
-    return  redirect(url_for("home"))
+    return redirect(url_for("home"))
 
 @flaskblog.route("/account")
 @login_required
